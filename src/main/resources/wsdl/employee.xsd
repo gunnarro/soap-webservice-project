@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           xmlns:n1="http://www.gunnarro.com/employee" targetNamespace="http://www.gunnarro.com/employee"
+           vc:minVersion="1.1">
+    <xs:element name="employee">
+        <xs:annotation>
+            <xs:documentation>Employee personal information</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="n1:address"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long" use="required"/>
+            <xs:attribute name="firstname" type="n1:PersonNameType" use="required"/>
+            <xs:attribute name="lastname" type="n1:PersonNameType" use="required"/>
+            <xs:attribute name="birthdate" type="xs:date" use="required"/>
+            <xs:attribute name="gender" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="address">
+        <xs:annotation>
+            <xs:documentation>Address of the employee</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="address" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EmployeeResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element ref="n1:employee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EmployeesResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="n1:employee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EmployeeByIdRequest">
+        <xs:annotation>
+            <xs:documentation>Query employee by Id</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="id"  type="xs:long" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EmployeeByNameRequest">
+        <xs:annotation>
+            <xs:documentation>Query an employee by name</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="firstname" type="n1:PersonNameType" use="required"/>
+            <xs:attribute name="lastname" type="n1:PersonNameType"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="PersonNameType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
