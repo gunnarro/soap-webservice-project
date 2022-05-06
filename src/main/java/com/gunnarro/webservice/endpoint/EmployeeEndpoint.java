@@ -1,6 +1,7 @@
-package com.gunnarro.webservice.service;
+package com.gunnarro.webservice.endpoint;
 
 import com.gunnarro.employee.*;
+import com.gunnarro.webservice.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.annotations.SchemaValidation;
 import org.apache.cxf.feature.Features;
@@ -17,9 +18,9 @@ import org.springframework.stereotype.Service;
 //(classes = SchemaValidationErrorInterceptor.class)
 public class EmployeeEndpoint implements EmployeeServicePortType {
 
-    BackendService backendService;
+    EmployeeService backendService;
 
-    public EmployeeEndpoint(BackendService backendService) {
+    public EmployeeEndpoint(EmployeeService backendService) {
         this.backendService = backendService;
     }
 

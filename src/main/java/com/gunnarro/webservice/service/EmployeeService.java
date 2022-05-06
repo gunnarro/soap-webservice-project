@@ -10,9 +10,9 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class BackendService {
+public class EmployeeService {
 
-    List<Employee> getEmployeesByName(String firstName, String lastName) throws Exception{
+    public List<Employee> getEmployeesByName(String firstName, String lastName) throws Exception{
             log.info("get: {}, {}", firstName, lastName);
             Employee employee1 = new Employee();
             employee1.setId(1);
@@ -31,7 +31,7 @@ public class BackendService {
             return Arrays.asList(employee1, employee2);
     }
 
-    Employee getEmployeeById(long id) throws Exception{
+    public Employee getEmployeeById(long id) throws Exception{
         Employee employee = new Employee();
         employee.setId(id);
         employee.setFirstname("John");

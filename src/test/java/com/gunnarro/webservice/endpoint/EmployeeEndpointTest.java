@@ -1,4 +1,4 @@
-package com.gunnarro.webservice;
+package com.gunnarro.webservice.endpoint;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.containsString;
 
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WebServiceTest {
+public class EmployeeEndpointTest {
     @LocalServerPort
     private int port;
 

@@ -1,11 +1,12 @@
 package com.gunnarro.webservice.configuration;
 
+import com.gunnarro.webservice.endpoint.EmployeeEndpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
+import org.apache.cxf.validation.BeanValidationInInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.gunnarro.webservice.service.EmployeeEndpoint;
 
 import javax.xml.ws.Endpoint;
 
@@ -18,6 +19,7 @@ public class ApplicationConfiguration {
     @Bean
     public Endpoint endpoint(EmployeeEndpoint employeeEndpoint) {
         EndpointImpl endpoint = new EndpointImpl(bus, employeeEndpoint);
+        new BeanValidationInInterceptor();
         endpoint.publish("/service/employee");
         return endpoint;
     }
