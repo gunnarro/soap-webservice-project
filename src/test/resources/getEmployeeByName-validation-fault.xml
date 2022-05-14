@@ -3,6 +3,6 @@
                   xmlns:emp="http://www.gunnarro.com/employee">
     <soapenv:Header/>
     <soapenv:Body>
-        <emp:EmployeeByIdRequest id="1"/>
+        <emp:EmployeeByNameRequest firstname="jo" lastname="Miller"/>
     </soapenv:Body>
 </soapenv:Envelope>

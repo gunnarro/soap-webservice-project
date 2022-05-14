@@ -1,6 +1,7 @@
 package com.gunnarro.webservice.service;
 
 import com.gunnarro.employee.Employee;
+import com.gunnarro.employee.GenderType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,14 @@ public class EmployeeService {
             employee1.setId(1);
             employee1.setFirstname("Jo");
             employee1.setLastname("Lewis");
-            employee1.setGender("M");
+            employee1.setGender(GenderType.F);
             employee1.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("2000-01-01"));
 
             Employee employee2 = new Employee();
             employee2.setId(2);
             employee2.setFirstname("Francis");
             employee2.setLastname("Stevens");
-            employee2.setGender("M");
+            employee2.setGender(GenderType.M);
             employee2.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("1999-01-01"));
 
             return Arrays.asList(employee1, employee2);
@@ -38,6 +39,18 @@ public class EmployeeService {
         employee.setLastname("Miller");
         employee.setBirthdate(DatatypeFactory.newInstance()
                 .newXMLGregorianCalendar("1999-01-01"));
+        employee.setGender(GenderType.M);
         return employee;
+    }
+
+    public List<Employee> getEmployeeByGender(String gender) throws Exception{
+        Employee employee = new Employee();
+        employee.setId(23);
+        employee.setFirstname("John");
+        employee.setLastname("Miller");
+        employee.setBirthdate(DatatypeFactory.newInstance()
+                .newXMLGregorianCalendar("1999-01-01"));
+        employee.setGender(GenderType.valueOf(gender));
+        return Arrays.asList(employee);
     }
 }

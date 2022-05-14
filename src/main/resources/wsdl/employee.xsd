@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-           xmlns:n1="http://www.gunnarro.com/employee" targetNamespace="http://www.gunnarro.com/employee"
-           vc:minVersion="1.1">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:n1="http://www.gunnarro.com/employee"
+           targetNamespace="http://www.gunnarro.com/employee">
     <xs:element name="employee">
         <xs:annotation>
             <xs:documentation>Employee personal information</xs:documentation>
@@ -14,7 +14,7 @@
             <xs:attribute name="firstname" type="n1:PersonNameType" use="required"/>
             <xs:attribute name="lastname" type="n1:PersonNameType" use="required"/>
             <xs:attribute name="birthdate" type="xs:date" use="required"/>
-            <xs:attribute name="gender" type="xs:string" use="required"/>
+            <xs:attribute name="gender" type="n1:GenderType" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="address">
@@ -57,10 +57,50 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="EmployeeByAddressRequest">
+        <xs:annotation>
+            <xs:documentation>Query an employee by address</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="postcode" type="n1:PersonNameType"/>
+                <xs:element name="streetName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="EmployeeByGenderRequest">
+        <xs:annotation>
+            <xs:documentation>Query an employee by gender</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gender" type="n1:GenderType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="person">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="firstname" type="xs:string"/>
+                <xs:element name="lastname" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:simpleType name="PersonNameType">
         <xs:restriction base="xs:string">
             <xs:minLength value="3"/>
             <xs:maxLength value="50"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:simpleType name="GenderType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="F"/>
+        </xs:restriction>
+    </xs:simpleType>
+
 </xs:schema>

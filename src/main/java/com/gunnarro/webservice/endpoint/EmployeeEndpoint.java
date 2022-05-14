@@ -5,23 +5,54 @@ import com.gunnarro.webservice.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.annotations.SchemaValidation;
 import org.apache.cxf.feature.Features;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+
+import javax.jws.WebService;
 
 /**
  * github: https://github.com/jpontdia/ws-employee-soapcxf
  * ref: https://cxf.apache.org/docs/annotations.html
  */
-@Service
+@Controller
 @Slf4j
+@WebService(targetNamespace = "http://www.gunnarro.com/employee",
+        name = "EmployeeServicePortType",
+        endpointInterface = "com.gunnarro.employee.EmployeeServicePortType",
+        serviceName = "EmployeeService",
+        wsdlLocation = "wsdl/EmployeeServices.wsdl")
 @Features(features = "org.apache.cxf.ext.logging.LoggingFeature")
 @SchemaValidation(type = SchemaValidation.SchemaValidationType.BOTH, schemas = "wsdl/EmployeeServices.wsdl")
-//(classes = SchemaValidationErrorInterceptor.class)
 public class EmployeeEndpoint implements EmployeeServicePortType {
 
-    EmployeeService backendService;
+    private EmployeeService employeeService;
 
-    public EmployeeEndpoint(EmployeeService backendService) {
-        this.backendService = backendService;
+    public EmployeeEndpoint(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @Override
+    public EmployeesResponse getEmployeesByGender(EmployeeByGenderRequest request) {
+        log.info("request: {}", request);
+        EmployeesResponse employeesResponse = new EmployeesResponse();
+        try {
+            employeesResponse.getEmployee().addAll(employeeService.getEmployeeByGender(request.getGender().value()));
+        } catch (Exception e) {
+            log.error("Error while setting values for employee object", e);
+        }
+        return employeesResponse;
+    }
+
+    @Override
+    public EmployeesResponse getEmployeesByAddress(EmployeeByAddressRequest request) {
+        log.info("request: {}", request);
+        EmployeesResponse employeesResponse = new EmployeesResponse();
+        try {
+            employeesResponse.getEmployee().addAll(employeeService.getEmployeesByName(request.getPostcode(), request.getStreetName()));
+        } catch (Exception e) {
+            log.error("Error while setting values for employee object", e);
+        }
+        return employeesResponse;
     }
 
     @Override
@@ -29,7 +60,7 @@ public class EmployeeEndpoint implements EmployeeServicePortType {
         log.info("request: {}", request);
         EmployeesResponse employeesResponse = new EmployeesResponse();
         try {
-            employeesResponse.getEmployee().addAll(backendService.getEmployeesByName(request.getFirstname(), request.getLastname()));
+            employeesResponse.getEmployee().addAll(employeeService.getEmployeesByName(request.getFirstname(), request.getLastname()));
         } catch (Exception e) {
             log.error("Error while setting values for employee object", e);
         }
@@ -40,7 +71,7 @@ public class EmployeeEndpoint implements EmployeeServicePortType {
     public EmployeeResponse getEmployeeById(EmployeeByIdRequest parameters) {
         EmployeeResponse employeeResponse = new EmployeeResponse();
         try {
-            employeeResponse.setEmployee(backendService.getEmployeeById(parameters.getId()));
+            employeeResponse.setEmployee(employeeService.getEmployeeById(parameters.getId()));
         } catch (Exception e) {
             log.error("Error while setting values for employee object", e);
         }
