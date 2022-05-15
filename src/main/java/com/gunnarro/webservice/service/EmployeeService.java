@@ -33,24 +33,35 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(long id) throws Exception{
+        log.debug("id={}", id);
         Employee employee = new Employee();
         employee.setId(id);
         employee.setFirstname("John");
         employee.setLastname("Miller");
-        employee.setBirthdate(DatatypeFactory.newInstance()
-                .newXMLGregorianCalendar("1999-01-01"));
+        employee.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("1999-01-01"));
         employee.setGender(GenderType.M);
         return employee;
     }
 
     public List<Employee> getEmployeeByGender(String gender) throws Exception{
+        log.debug("gender={}", gender);
         Employee employee = new Employee();
         employee.setId(23);
         employee.setFirstname("John");
         employee.setLastname("Miller");
-        employee.setBirthdate(DatatypeFactory.newInstance()
-                .newXMLGregorianCalendar("1999-01-01"));
+        employee.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("1999-01-01"));
         employee.setGender(GenderType.valueOf(gender));
-        return Arrays.asList(employee);
+        return List.of(employee);
+    }
+
+    public List<Employee> getEmployeeByAddress(String postCode, String streetname) throws Exception{
+        log.debug("{}, {}", postCode, streetname);
+        Employee employee = new Employee();
+        employee.setId(23);
+        employee.setFirstname("Per");
+        employee.setLastname("Hansen");
+        employee.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("1999-01-01"));
+        employee.setGender(GenderType.valueOf("M"));
+        return List.of(employee);
     }
 }

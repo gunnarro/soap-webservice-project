@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.annotations.SchemaValidation;
 import org.apache.cxf.feature.Features;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
 
@@ -25,7 +24,7 @@ import javax.jws.WebService;
 @SchemaValidation(type = SchemaValidation.SchemaValidationType.BOTH, schemas = "wsdl/EmployeeServices.wsdl")
 public class EmployeeEndpoint implements EmployeeServicePortType {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeEndpoint(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -48,7 +47,7 @@ public class EmployeeEndpoint implements EmployeeServicePortType {
         log.info("request: {}", request);
         EmployeesResponse employeesResponse = new EmployeesResponse();
         try {
-            employeesResponse.getEmployee().addAll(employeeService.getEmployeesByName(request.getPostcode(), request.getStreetName()));
+            employeesResponse.getEmployee().addAll(employeeService.getEmployeeByAddress(request.getPostcode(), request.getStreetName()));
         } catch (Exception e) {
             log.error("Error while setting values for employee object", e);
         }
@@ -68,10 +67,10 @@ public class EmployeeEndpoint implements EmployeeServicePortType {
     }
 
     @Override
-    public EmployeeResponse getEmployeeById(EmployeeByIdRequest parameters) {
+    public EmployeeResponse getEmployeeById(EmployeeByIdRequest request) {
         EmployeeResponse employeeResponse = new EmployeeResponse();
         try {
-            employeeResponse.setEmployee(employeeService.getEmployeeById(parameters.getId()));
+            employeeResponse.setEmployee(employeeService.getEmployeeById(request.getId()));
         } catch (Exception e) {
             log.error("Error while setting values for employee object", e);
         }

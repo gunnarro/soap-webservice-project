@@ -93,7 +93,7 @@
 	<!-- Definition of the service and the endpoint. -->
 	<wsdl:service name="EmployeeService">
 		<wsdl:port name="EmployeeServiceSOAP" binding="tns:EmployeeServiceSOAP">
-			<soap:address location="the-url-service-goes-here"/>
+			<soap:address location="/service/employee"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

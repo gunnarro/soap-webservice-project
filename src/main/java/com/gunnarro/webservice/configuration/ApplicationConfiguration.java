@@ -36,6 +36,7 @@ public class ApplicationConfiguration {
         EndpointImpl endpoint = new EndpointImpl(bus, employeeEndpoint);
         // map.put("", SchemaValidation.SchemaValidationType.BOTH);
         //new BeanValidationInInterceptor();
+        endpoint.setWsdlLocation("wsdl/EmployeeServices.wsdl");
         endpoint.publish("/service/employee");
         return endpoint;
     }
