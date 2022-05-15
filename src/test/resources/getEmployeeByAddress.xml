@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:emp="http://www.gunnarro.com/employee">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <emp:EmployeeByAddressRequest>
+            <postcode>0467</postcode>
+            <streetName>bergslia</streetName>
+        </emp:EmployeeByAddressRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
