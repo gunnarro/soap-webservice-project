@@ -15,4 +15,4 @@ jobs:
     with:
       username: gunnarro
     secrets:
-      secrets: inherit
+      token: ${{ secrets.SONAQUBE_TOKEN }}
