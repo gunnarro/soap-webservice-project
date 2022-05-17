@@ -11,7 +11,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: gunnarro/microservice-workflow/.github/workflows/maven-build.yml@main
+    uses: microservice-workflow/.github/workflows/maven-build.yml@main
     with:
       username: gunnarro
     secrets:
