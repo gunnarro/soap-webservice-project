@@ -11,10 +11,11 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: gunnarro/microservice-workflow/.github/workflows/maven-build.yml@main
+    uses: gunnarro/microservice-workflow/.github/workflows/maven-sonar.yml@main
     with:
       sonarqube_url: https://sonarcloud.io
       sonarqube_organization: gunnarro
+      sonarqube_project_key: gunnarro_soap-webservice-project
     secrets:
       sonarqube_token: ${{ secrets.SONAR_TOKEN }}
     
