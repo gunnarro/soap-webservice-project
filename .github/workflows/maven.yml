@@ -13,6 +13,8 @@ jobs:
   call-workflow-passing-data:
     uses: gunnarro/microservice-workflow/.github/workflows/maven-build.yml@main
     with:
-      username: gunnarro
+      sonarqube-url: ${{ secrets.SONAQUBE_URL }}
+      sonarqube_organization: ${{ secrets.SONAQUBE_ORGANIZATION }}
     secrets:
-      token: ${{ secrets.SONAQUBE_TOKEN }}
+      sonarqube_token: ${{ secrets.SONAQUBE_TOKEN }}
+      github_token: ${{ secrets.GITHUB_TOKEN }}
