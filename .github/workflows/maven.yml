@@ -16,4 +16,4 @@ jobs:
       sonarqube_organization: ${{ secrets.SONAR_ORGANIZATION }}
     secrets:
       sonarqube_token: ${{ secrets.SONAR_TOKEN }}
-      # github_token: ${{ secrets.GITHUB_TOKEN }}
+    
