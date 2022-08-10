@@ -5,3 +5,6 @@ An example for how to setup and configre Sping Boot to use Apache cxf and may be
 
 # Workflow
 Use common workflow from [microservice-workflow](https://github.com/gunnarro/microservice-workflow)
+
+## sonarquber
+* [soap-webservice-project](https://sonarcloud.io/project/overview?id=gunnarro_soap-webservice-project)
