@@ -1,4 +1,4 @@
-<configuration scan="true" scanPeriod="120 seconds" >
+<configuration scan="true" scanPeriod="120 seconds">
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -14,9 +14,15 @@
         </encoder>
     </appender>
 
-    <logger name="om.gunnarro.webservice" level="DEBUG" additivity="false" />
-    <logger name="org.springframework" level="INFO" additivity="false" />
-    <logger name="org.apache.cxf" level="INFO" additivity="false" />
+    <logger name="om.gunnarro.webservice" level="DEBUG" additivity="false"/>
+    <logger name="org.springframework" level="TRACE" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="org.apache.cxf" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
 
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>
