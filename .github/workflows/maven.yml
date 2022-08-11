@@ -1,0 +1,21 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  call-workflow-passing-data:
+    uses: gunnarro/microservice-workflow/.github/workflows/maven-sonar.yml@main
+    with:
+      sonarqube_url: https://sonarcloud.io
+      sonarqube_organization: gunnarro
+      sonarqube_project_key: gunnarro_soap-webservice-project
+    secrets:
+      sonarqube_token: ${{ secrets.SONAR_TOKEN }}
+    

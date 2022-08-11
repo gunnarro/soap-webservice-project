@@ -3,6 +3,9 @@
                   xmlns:emp="http://www.gunnarro.com/employee">
     <soapenv:Header/>
     <soapenv:Body>
-        <emp:EmployeeByIdRequest id="1"/>
+        <emp:EmployeeByAddressRequest>
+            <postcode>0467</postcode>
+            <streetName>bergslia</streetName>
+        </emp:EmployeeByAddressRequest>
     </soapenv:Body>
 </soapenv:Envelope>

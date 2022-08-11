@@ -16,6 +16,12 @@
 	<wsdl:message name="EmployeeByNameRequest">
 		<wsdl:part name="parameters" element="tns:EmployeeByNameRequest"/>
 	</wsdl:message>
+	<wsdl:message name="EmployeeByAddressRequest">
+		<wsdl:part name="parameters" element="tns:EmployeeByAddressRequest"/>
+	</wsdl:message>
+	<wsdl:message name="EmployeeByGenderRequest">
+		<wsdl:part name="parameters" element="tns:EmployeeByGenderRequest"/>
+	</wsdl:message>
 	<wsdl:message name="EmployeeResponse">
 		<wsdl:part name="parameters" element="tns:EmployeeResponse"/>
 	</wsdl:message>
@@ -31,6 +37,14 @@
 		</wsdl:operation>
 		<wsdl:operation name="GetEmployeesByName">
 			<wsdl:input message="tns:EmployeeByNameRequest"/>
+			<wsdl:output message="tns:EmployeesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEmployeesByAddress">
+			<wsdl:input message="tns:EmployeeByAddressRequest"/>
+			<wsdl:output message="tns:EmployeesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEmployeesByGender">
+			<wsdl:input message="tns:EmployeeByGenderRequest"/>
 			<wsdl:output message="tns:EmployeesResponse"/>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -56,12 +70,30 @@
 				<soap:body use="literal"/>
 			</wsdl:output>
 		</wsdl:operation>
+		<wsdl:operation name="GetEmployeesByAddress">
+			<soap:operation soapAction="http://www.jpworks.com/employee/GetEmployeesByAddress"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetEmployeesByGender">
+			<soap:operation soapAction="http://www.jpworks.com/employee/GetEmployeesByAddress"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
 	</wsdl:binding>
 
 	<!-- Definition of the service and the endpoint. -->
 	<wsdl:service name="EmployeeService">
 		<wsdl:port name="EmployeeServiceSOAP" binding="tns:EmployeeServiceSOAP">
-			<soap:address location="the-url-service-goes-here"/>
+			<soap:address location="/service/employee"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
