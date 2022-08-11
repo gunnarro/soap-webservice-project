@@ -12,8 +12,11 @@ import javax.xml.ws.Endpoint;
 @Configuration
 public class ApplicationConfiguration {
 
-    @Autowired
     private Bus bus;
+
+    public ApplicationConfiguration(Bus bus) {
+        this.bus = bus;
+    }
 
     @Bean
     public Endpoint endpoint(EmployeeEndpoint employeeEndpoint) {

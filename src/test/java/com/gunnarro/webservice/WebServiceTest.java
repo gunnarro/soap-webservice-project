@@ -28,7 +28,7 @@ public class WebServiceTest {
     private ResourceLoader resourceLoader;
 
     @Test
-    public void wsdl(){
+    void wsdl(){
         given()
             .when()
                 .get("http://localhost:" + port +"/soap/service/employee?wsdl")
@@ -38,7 +38,7 @@ public class WebServiceTest {
     }
 
     @Test
-    public void listOfServices(){
+    void listOfServices(){
         given()
                 .when()
                 .get("http://localhost:" + port +"/soap")
@@ -48,7 +48,7 @@ public class WebServiceTest {
     }
 
     @Test
-    public void getEmployeeById(){
+    void getEmployeeById(){
         Resource res = resourceLoader.getResource("classpath:getEmployeeById.xml");
         given()
             .contentType("text/xml;charset=UTF-8")
@@ -61,7 +61,7 @@ public class WebServiceTest {
     }
 
     @Test
-    public void getEmployeeByName(){
+    void getEmployeeByName(){
         Resource res = resourceLoader.getResource("classpath:getEmployeeByName.xml");
         given()
                 .contentType("text/xml;charset=UTF-8")
