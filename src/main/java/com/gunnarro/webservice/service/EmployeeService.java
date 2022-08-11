@@ -17,7 +17,7 @@ public class EmployeeService {
             log.info("get: {}, {}", firstName, lastName);
             Employee employee1 = new Employee();
             employee1.setId(1);
-            employee1.setFirstname("Jo");
+            employee1.setFirstname("Jon");
             employee1.setLastname("Lewis");
             employee1.setGender(GenderType.F);
             employee1.setBirthdate(DatatypeFactory.newInstance().newXMLGregorianCalendar("2000-01-01"));

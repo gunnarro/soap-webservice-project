@@ -13,7 +13,7 @@ logging:
 # By default the path for cxf is: /services
 cxf:
   #Overriding the default path
-  path: /
+  path: /soap
 
 spring:
   profiles:
