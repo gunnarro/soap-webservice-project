@@ -19,7 +19,7 @@
 		<java.version>11</java.version>
 		<groovy.version>3.0.10</groovy.version>
 		<cxf.version>3.5.3</cxf.version>
-		<cxf-xjc.version>3.3.2</cxf-xjc-ts.version>
+		<cxf-xjc.version>3.3.2</cxf-xjc.version>
 		<jackson.version>2.13.3</jackson.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
 		<!-- test -->
