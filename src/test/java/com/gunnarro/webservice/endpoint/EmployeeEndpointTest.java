@@ -47,7 +47,7 @@ public class EmployeeEndpointTest {
     void listOfServices() {
         given()
                 .when()
-                .get("http://localhost:" + port + "/")
+                .get("http://localhost:" + port + "/soap")
                 .then()
                 .assertThat()
                 .statusCode(200)
