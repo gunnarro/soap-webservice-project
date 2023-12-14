@@ -20,7 +20,7 @@
 		<!-- groovy.version>3.0.10</groovy.version -->
 		<cxf.version>3.5.7</cxf.version>
 		<cxf-xjc.version>3.3.2</cxf-xjc.version>
-		<jackson.version>2.14.2</jackson.version>
+		<jackson.version>2.14.3</jackson.version>
 		<commons-lang3.version>3.13.0</commons-lang3.version>
 		<!-- spring boot override versions -->
 		<snakeyaml.version>2.2</snakeyaml.version>
