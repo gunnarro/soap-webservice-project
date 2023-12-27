@@ -24,6 +24,7 @@
 		<commons-lang3.version>3.14.0</commons-lang3.version>
 		<!-- spring boot override versions -->
 		<snakeyaml.version>2.2</snakeyaml.version>
+		<logback.version>1.4.14</logback.version>
 		<!-- test -->
 		<rest-assured.version>5.2.0</rest-assured.version>
         <hamcrest.version>2.2</hamcrest.version>
